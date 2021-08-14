@@ -1,0 +1,16 @@
+body {
+  background-color: bisque;
+  text-align: center;
+}
+
+#jenny {
+  width: 100px;
+}
+
+.game__container {
+  width: 800px;
+  height: 800px;
+  background: url(imgs/jenny/level3.jpeg) no-repeat center/cover;
+  background-size: 600px;
+  margin: auto;
+}
