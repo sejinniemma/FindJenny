@@ -2,6 +2,13 @@
 
 //음악넣기
 //타이머넣기
+const startBanner = document.querySelector('.game__start__banner');
+const startBtn = document.querySelector('.startBtn');
+startBtn.addEventListener('click', startGame);
+
+function startGame(){
+    startBanner.style.display = 'none';
+}
 
 document.addEventListener('click',(event)=>{
 
