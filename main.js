@@ -2,27 +2,40 @@
 
 //음악넣기
 //타이머넣기
-const startBanner = document.querySelector('.game__start__banner');
-const startBtn = document.querySelector('.startBtn');
-startBtn.addEventListener('click', startGame);
 
-function startGame(){
+const gameContainer = document.querySelector('.game__container');
+const startBanner = document.querySelector('.game__start__banner');
+const gameTextMessage = document.querySelector('.game__banner');
+const startBtn = document.querySelector('.startBtn');
+
+let started = false;
+
+startBtn.addEventListener('click', initGame);
+function initGame(){
+    started = true;
     startBanner.style.display = 'none';
+    startGame();
 }
 
-document.addEventListener('click',(event)=>{
+function startGame(){
+    onClickField();
+}
 
-    const x = event.clientX;
-    const y = event.clientY;
+function onClickField(){
+    if(started){
+        return;
+    }
+    gameContainer.addEventListener('click',(event)=>{
+        const x = event.clientX;
+        const y = event.clientY;
 
-
-     if(x > 710 && x < 725){
-         if(y > 625 && y < 655){
-             console.log('hi');
-             // 배너보여주기
+         if(x > 830 && x < 846){
+             if(y > 622 && y < 662){
+                console.log('hi');
+             }
          }
+        gameTextMessage.style.display = 'block';
+    })
+}
+  
 
-     }
-    // console.log(event.clientX,event.clientY)
-    // clientx :709-724 , clientY : 607-636
-})
