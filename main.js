@@ -11,20 +11,21 @@ const startBtn = document.querySelector('.startBtn');
 let started = false;
 
 startBtn.addEventListener('click', initGame);
-function initGame(){
-    started = true;
+function initGame() {
     startBanner.style.display = 'none';
-    startGame();
-}
+    started = true;
+    setTimeout(startGame,1000);
+    }
+    
+//클릭할때는 작동이 안되게 하고 클릭하고나서는 onClickField가 작동이 될 수 있도록
 
 function startGame(){
-    onClickField();
+    if(started){
+        onClickField();
+    }
 }
 
 function onClickField(){
-    if(started){
-        return;
-    }
     gameContainer.addEventListener('click',(event)=>{
         const x = event.clientX;
         const y = event.clientY;
@@ -34,8 +35,12 @@ function onClickField(){
                 console.log('hi');
              }
          }
-        gameTextMessage.style.display = 'block';
+        showTextMessage();
     })
 }
   
 
+function showTextMessage(){
+    gameTextMessage.style.display = 'block';
+    setTimeout(gameTextMessage.style.display = 'none',1000);
+}
