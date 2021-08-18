@@ -6,8 +6,11 @@
 const gameContainer = document.querySelector('.game__container');
 const startBanner = document.querySelector('.game__start__banner');
 const gameTextMessage = document.querySelector('.game__banner');
+const loseMessage = document.querySelector('.game__banner > lose');
 const startBtn = document.querySelector('.startBtn');
 const gameTimer = document.querySelector('.game__timer');
+
+
 
 let started = false;
 const timeDuration = 60;
@@ -37,15 +40,16 @@ function onClickField(){
          if(x > 830 && x < 846){
              if(y > 622 && y < 662){
                 console.log('hi');
+                showTextMessage(winMessage);
              }
          }
-         gameTextMessage.style.display = 'block';
+        showTextMessage(TryAgainMessage);
     })
 }
   
 
-function showTextMessage(){
-    gameTextMessage.style.display = 'block';
+function showTextMessage(message){
+    gameTextMessage.message.style.display = 'block';
     //시간멈추기
     //게임스탑 started = false로 바꿈
     //누르면 사라짐 or  1초있다 사라짐
@@ -69,3 +73,5 @@ function showTimer(time){
 
     gameTimer.innerText = `${minute} : ${second}`;
 }
+
+
