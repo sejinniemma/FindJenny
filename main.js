@@ -5,8 +5,8 @@
 
 const gameContainer = document.querySelector('.game__container');
 const startBanner = document.querySelector('.game__start__banner');
-const gameTextMessage = document.querySelector('.game__banner');
-const loseMessage = document.querySelector('.game__banner > lose');
+const TryAgainMessage = document.querySelector('.game__banner1');
+const LevelUpMessage = document.querySelector('.game__banner2');
 const startBtn = document.querySelector('.startBtn');
 const gameTimer = document.querySelector('.game__timer');
 
@@ -37,23 +37,28 @@ function onClickField(){
         const x = event.clientX;
         const y = event.clientY;
 
-         if(x > 830 && x < 846){
-             if(y > 622 && y < 662){
-                console.log('hi');
-                showTextMessage(winMessage);
-             }
-         }
-        showTextMessage(TryAgainMessage);
+        if(x > 980 && x < 995 && y > 622 && y < 662){
+    
+        
+             showTextMessage(LevelUpMessage);
+             
+            
+        }else {
+            showTextMessage(TryAgainMessage);
+            
+        }
     })
 }
+
+
   
 
 function showTextMessage(message){
-    gameTextMessage.message.style.display = 'block';
-    //시간멈추기
-    //게임스탑 started = false로 바꿈
-    //누르면 사라짐 or  1초있다 사라짐
-    // setTimeout(gameTextMessage.style.display = 'none',1000);
+    message.style.display = 'block';
+}
+
+function hideTextMessage(message){
+    message.style.display = 'none';
 }
 
 function startTimer(){

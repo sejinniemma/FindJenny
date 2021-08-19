@@ -90,7 +90,8 @@ button {
   cursor: pointer;
 }
 
-.game__banner {
+.game__banner1,
+.game__banner2 {
   display: none;
   position: absolute;
   top: 30%;
