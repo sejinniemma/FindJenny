@@ -17,6 +17,7 @@ function initGame() {
     started = true;
     setTimeout(startGame,1000);
     startTimer();
+    bgMusic.play();
     }
 
 function startGame(){
@@ -32,8 +33,10 @@ function onClickField(){
 
         if(x > 980 && x < 995 && y > 622 && y < 662){
              showTextMessage(LevelUpMessage); 
+             clearInterval(timer);
+             bgMusic.pause(); 
         }else {
-            showTextMessage(TryAgainMessage);        
+            showTextMessage(TryAgainMessage);       
             setInterval(()=>{
                 hideTextMessage(TryAgainMessage);
             },2000);  
@@ -57,6 +60,7 @@ function startTimer(){
         showTimer(--setTimeDuration);
          if(setTimeDuration === 0){
              clearInterval(timer);
+             bgMusic.pause();
          }
     }, 1000);
 }
@@ -69,4 +73,4 @@ function showTimer(time){
 }
 
 
-const bgMusic = new Audio(music/clock.wav);
+const bgMusic = new Audio('music/clock.wav');
