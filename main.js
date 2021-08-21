@@ -17,13 +17,11 @@ function initGame() {
     started = true;
     setTimeout(startGame,1000);
     startTimer();
-    bgMusic.play();
+    musicPlay(bgMusic);
     }
 
 function startGame(){
-    if(started){
-        onClickField();
-    }
+    started && onClickField();   
 }
 
 function onClickField(){
@@ -31,18 +29,35 @@ function onClickField(){
         const x = event.clientX;
         const y = event.clientY;
 
-        if(x > 980 && x < 995 && y > 622 && y < 662){
-             showTextMessage(LevelUpMessage); 
-             clearInterval(timer);
-             bgMusic.pause(); 
-        }else {
-            showTextMessage(TryAgainMessage);       
-            setInterval(()=>{
-                hideTextMessage(TryAgainMessage);
-            },2000);  
-        }
+        gameWInAndLoose(x,y);
+        musicPlay(pullSound);
     })
 }
+
+function gameWInAndLoose(verti,horoz) {
+    if(verti > 980 && verti < 995 && horoz > 622 && horoz < 662){
+      gameWIn();
+   }else {
+      gameLoose();
+   }
+}
+
+function gameWIn() {
+    showTextMessage(LevelUpMessage); 
+    clearInterval(timer);
+    musicPause(bgMusic); 
+}
+
+function gameLoose() {
+    showTextMessage(TryAgainMessage);
+    
+    TryAgainMessage.addEventListener('click',()=>{
+       TryAgainMessage.style.display = 'none'; 
+    })  
+    // setInterval(() => {
+    //     hideTextMessage(TryAgainMessage);
+    // },1000);  
+} 
 
 
 function showTextMessage(message){
@@ -60,7 +75,7 @@ function startTimer(){
         showTimer(--setTimeDuration);
          if(setTimeDuration === 0){
              clearInterval(timer);
-             bgMusic.pause();
+             musicPause(bgMusic);
          }
     }, 1000);
 }
@@ -74,3 +89,14 @@ function showTimer(time){
 
 
 const bgMusic = new Audio('music/clock.wav');
+const pullSound = new Audio('music/carrot_pull.mp3');
+
+function musicPlay(sound){
+    sound.play();
+}
+
+function musicPause(sound){
+    sound.pause();
+}
+// 1. 코드 더 나은 성능 없는지 구상 / 다른 컴퓨터나 모바일에서 사이즈에 따라 타겟이 바뀌면 ...
+// 2. 다음 레벨로 넘어가는 코드 짜기
