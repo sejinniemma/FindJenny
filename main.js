@@ -47,6 +47,7 @@ function gameWIn() {
     hideTextMessage(TryAgainMessage);
     clearInterval(timer);
     musicPause(bgMusic); 
+    musicPlay(winSound);
 }
 
 function gameLoose() {
@@ -85,7 +86,7 @@ function showTimer(time){
     gameTimer.innerText = `${minute} : ${second}`;
 }
 
-
+const winSound = new Audio('music/뚝배기.mp3');
 const bgMusic = new Audio('music/clock.wav');
 const pullSound = new Audio('music/바운스.mp3');
 
