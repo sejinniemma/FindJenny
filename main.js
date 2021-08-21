@@ -44,6 +44,7 @@ function gameWInAndLoose(verti,horoz) {
 
 function gameWIn() {
     showTextMessage(LevelUpMessage); 
+    hideTextMessage(TryAgainMessage);
     clearInterval(timer);
     musicPause(bgMusic); 
 }
@@ -53,10 +54,7 @@ function gameLoose() {
     
     TryAgainMessage.addEventListener('click',()=>{
        TryAgainMessage.style.display = 'none'; 
-    })  
-    // setInterval(() => {
-    //     hideTextMessage(TryAgainMessage);
-    // },1000);  
+    })   
 } 
 
 
@@ -89,7 +87,7 @@ function showTimer(time){
 
 
 const bgMusic = new Audio('music/clock.wav');
-const pullSound = new Audio('music/carrot_pull.mp3');
+const pullSound = new Audio('music/바운스.mp3');
 
 function musicPlay(sound){
     sound.play();
