@@ -11,6 +11,7 @@ let started = false;
 const timeDuration = 60;
 let timer;
 
+// Game start
 startBtn.addEventListener('click', initGame);
 function initGame() {
     startBanner.style.display = 'none';
@@ -24,13 +25,14 @@ function startGame(){
     started && onClickField();   
 }
 
+// onClickFiled & gameWinAndLoose
 function onClickField(){
     gameContainer.addEventListener('click',(event)=>{
         const x = event.clientX;
         const y = event.clientY;
 
         gameWInAndLoose(x,y);
-        musicPlay(pullSound);
+        musicPlay(looseSound);
     })
 }
 
@@ -46,7 +48,8 @@ function gameWIn() {
     showTextMessage(LevelUpMessage); 
     hideTextMessage(TryAgainMessage);
     clearInterval(timer);
-    musicPause(bgMusic); 
+    musicPause(bgMusic);
+    musicPause(looseSound) 
     musicPlay(winSound);
 }
 
@@ -58,7 +61,7 @@ function gameLoose() {
     })   
 } 
 
-
+// Show Text Message
 function showTextMessage(message){
     message.style.display = 'block';
 }
@@ -67,6 +70,7 @@ function hideTextMessage(message){
     message.style.display = 'none';
 }
 
+// Timer
 function startTimer(){
     let setTimeDuration = timeDuration;
     showTimer(setTimeDuration);
@@ -86,9 +90,11 @@ function showTimer(time){
     gameTimer.innerText = `${minute} : ${second}`;
 }
 
+
+// Music
 const winSound = new Audio('music/뚝배기.mp3');
 const bgMusic = new Audio('music/clock.wav');
-const pullSound = new Audio('music/바운스.mp3');
+const looseSound = new Audio('music/바운스.mp3');
 
 function musicPlay(sound){
     sound.play();
@@ -97,5 +103,3 @@ function musicPlay(sound){
 function musicPause(sound){
     sound.pause();
 }
-// 1. 코드 더 나은 성능 없는지 구상 / 다른 컴퓨터나 모바일에서 사이즈에 따라 타겟이 바뀌면 ...
-// 2. 다음 레벨로 넘어가는 코드 짜기
