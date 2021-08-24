@@ -1,11 +1,14 @@
 'use strict';
 
+
 const gameContainer = document.querySelector('.game__container');
 const startBanner = document.querySelector('.game__start__banner');
 const TryAgainMessage = document.querySelector('.game__banner1');
 const LevelUpMessage = document.querySelector('.game__banner2');
 const startBtn = document.querySelector('.startBtn');
 const gameTimer = document.querySelector('.game__timer');
+const gameBackGround = document.querySelector('.game__playground');
+
 
 let started = false;
 const timeDuration = 60;
@@ -89,6 +92,13 @@ function showTimer(time){
 
     gameTimer.innerText = `${minute} : ${second}`;
 }
+
+
+LevelUpMessage.addEventListener('click', () => {
+    gameBackGround.style.background = 'url(imgs/jenny/level2.jpeg) no-repeat center/cover'
+
+})
+
 
 
 // Music

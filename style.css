@@ -43,13 +43,13 @@ button {
   width: 100px;
 }
 
-#jenny2 {
+#jennybtn {
   display: block;
   width: 80px;
   margin: auto;
 }
 
-#jenny2:hover {
+#jennybtn:hover {
   transform: scale(1.1);
 }
 
