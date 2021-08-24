@@ -25,21 +25,21 @@ function initGame() {
     }
 
 function startGame(){
-    started && onClickField();   
+    started && onClickField(level1);   
 }
 
 // onClickFiled & gameWinAndLoose
-function onClickField(){
+function onClickField(stage){
     gameContainer.addEventListener('click',(event)=>{
         const x = event.clientX;
         const y = event.clientY;
 
-        gameWInAndLoose(x,y);
+        stage(x,y);
         musicPlay(looseSound);
     })
 }
 
-function gameWInAndLoose(verti,horoz) {
+function level1(verti,horoz) {
     if(verti > 980 && verti < 995 && horoz > 622 && horoz < 662){
       gameWIn();
    }else {
@@ -96,7 +96,7 @@ function showTimer(time){
 
 LevelUpMessage.addEventListener('click', () => {
     gameBackGround.style.background = 'url(imgs/jenny/level2.jpeg) no-repeat center/cover'
-
+    hideTextMessage(LevelUpMessage);
 })
 
 
