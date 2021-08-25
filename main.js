@@ -114,21 +114,26 @@ function showTimer(time){
 
 
 LevelUpMessage.addEventListener('click', () => {
-    gameBackGround.style.background = levelUp[i].src;
-    hideTextMessage(LevelUpMessage);
-    startTimer();
-    onClickField(level2);
-    musicPlay(bgMusic);
-    i++;
-     if(i === 1){
+    nextLevel();
+    
+    if(i === 1){
          onClickField(level3);
+     }else if( i === 0){
+         onClickField(level2);
      }
 })
 
+function nextLevel (){
+    gameBackGround.style.background = levelUp[i].src;
+    hideTextMessage(LevelUpMessage);
+    startTimer();
+    musicPlay(bgMusic);
+    i++;
+}
 
-
-
-//배경이미지를 배열로 만들어서 클릭할때마다 이동하게 만들기!!
+// 이겼을때 트라이어게인 메세지 딸려나오지 않게만들기
+// 마지막 이겼을 때 메세지와 게임종료
+// 더 효율적인 코드
 
 
 const levelUp = [
