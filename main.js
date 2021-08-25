@@ -34,6 +34,8 @@ function onClickField(stage){
     gameContainer.addEventListener('click',(event)=>{
         const x = event.clientX;
         const y = event.clientY;
+
+      
 console.log(x,y)
         stage(x,y);
         musicPlay(looseSound);
@@ -50,6 +52,14 @@ function level1(verti,horoz) {
 
 function level2(verti,horoz) {
     if(verti > 780 && verti < 797 && horoz > 172 && horoz < 203){
+      gameWIn();
+   }else {
+      gameLoose();
+   }
+}
+
+function level3(verti,horoz) {
+    if(verti > 716 && verti < 737 && horoz > 416 && horoz < 453){
       gameWIn();
    }else {
       gameLoose();
@@ -109,7 +119,10 @@ LevelUpMessage.addEventListener('click', () => {
     startTimer();
     onClickField(level2);
     musicPlay(bgMusic);
-    
+    i++;
+     if(i === 1){
+         onClickField(level3);
+     }
 })
 
 
