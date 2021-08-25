@@ -13,6 +13,7 @@ const gameBackGround = document.querySelector('.game__playground');
 let started = false;
 const timeDuration = 60;
 let timer;
+let i = 0;
 
 // Game start
 startBtn.addEventListener('click', initGame);
@@ -103,12 +104,28 @@ function showTimer(time){
 
 
 LevelUpMessage.addEventListener('click', () => {
-    gameBackGround.style.background = 'url(imgs/jenny/level2.jpeg) no-repeat center/cover'
+    gameBackGround.style.background = levelUp[i].src;
     hideTextMessage(LevelUpMessage);
     startTimer();
     onClickField(level2);
     musicPlay(bgMusic);
+    
 })
+
+
+
+
+//배경이미지를 배열로 만들어서 클릭할때마다 이동하게 만들기!!
+
+
+const levelUp = [
+    {
+        src : 'url(imgs/jenny/level2.jpeg) no-repeat center/cover'
+    },
+    {
+        src : 'url(imgs/jenny/level3.jpeg) no-repeat center/cover'
+    }
+]
 
 
 
