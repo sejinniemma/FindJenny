@@ -91,7 +91,8 @@ button {
 }
 
 .game__banner1,
-.game__banner2 {
+.game__banner2,
+.game__banner3 {
   display: none;
   position: absolute;
   top: 30%;
