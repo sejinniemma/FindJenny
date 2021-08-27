@@ -66,21 +66,19 @@ function level3(verti,horoz) {
 }
 
 function FinalWin(){
-    showTextMessage(FinalWinMessage);
-    hideTextMessage(TryAgainMessage);
-    clearInterval(timer);
-    musicPause(bgMusic);
-    musicPause(looseSound) 
-    musicPlay(winSound);
+    momnetOfWin(FinalWinMessage,finalWinSound);
 }
 
 function gameWIn() {
-    showTextMessage(LevelUpMessage); 
+    momnetOfWin(LevelUpMessage,winSound);
+}
+
+function momnetOfWin(text,sound){
+    showTextMessage(text);
     hideTextMessage(TryAgainMessage);
     clearInterval(timer);
     musicPause(bgMusic);
-    musicPause(looseSound) 
-    musicPlay(winSound);
+    musicPlay(sound);
 }
 
 function gameLoose() {
@@ -157,7 +155,7 @@ const levelUp = [
 const winSound = new Audio('music/뚝배기.mp3');
 const bgMusic = new Audio('music/clock.wav');
 const looseSound = new Audio('music/바운스.mp3');
-
+const finalWinSound = new Audio('music/final.wav');
 function musicPlay(sound){
     sound.play();
 }
@@ -165,3 +163,7 @@ function musicPlay(sound){
 function musicPause(sound){
     sound.pause();
 }
+
+//게임이 이겼을 떄 사운드추가
+//네이밍다시
+//시간이 0 이되면 무조건 게임오버 - 리플레이버튼 만들기 (게임 다시시작)
