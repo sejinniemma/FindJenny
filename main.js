@@ -26,7 +26,7 @@ function initGame() {
     }
 
 function startGame(){
-    started && onClickField(level1);   
+    started && onClickField(levelUp[i].lev);   
 }
 
 // onClickFiled & gameWinAndLoose
@@ -35,8 +35,6 @@ function onClickField(stage){
         const x = event.clientX;
         const y = event.clientY;
 
-      
-console.log(x,y)
         stage(x,y);
         musicPlay(looseSound);
     })
@@ -114,13 +112,9 @@ function showTimer(time){
 
 
 LevelUpMessage.addEventListener('click', () => {
+    i++;
     nextLevel();
-    
-    if(i === 1){
-         onClickField(level3);
-     }else if( i === 0){
-         onClickField(level2);
-     }
+    onClickField(levelUp[i].lev);
 })
 
 function nextLevel (){
@@ -128,7 +122,6 @@ function nextLevel (){
     hideTextMessage(LevelUpMessage);
     startTimer();
     musicPlay(bgMusic);
-    i++;
 }
 
 // 이겼을때 트라이어게인 메세지 딸려나오지 않게만들기
@@ -138,9 +131,15 @@ function nextLevel (){
 
 const levelUp = [
     {
+        lev : level1,
+        src : 'url(imgs/jenny/level1.jpeg) no-repeat center/cover'
+    },
+    {
+        lev : level2,
         src : 'url(imgs/jenny/level2.jpeg) no-repeat center/cover'
     },
     {
+        lev : level3,
         src : 'url(imgs/jenny/level3.jpeg) no-repeat center/cover'
     }
 ]
