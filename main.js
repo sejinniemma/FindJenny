@@ -18,10 +18,17 @@ let timer;
 let i = 0;
 
 // Game start
-startBtn.addEventListener('click', initGame);
+startBtn.addEventListener('click', ()=>{
+    started = true;
+    if(!started){
+        return;
+    }else if(started){
+        initGame();
+    }
+});
+
 function initGame() {
     startBanner.style.display = 'none';
-    started = true;
     setTimeout(startGame,1000);
     startTimer();
     musicPlay(bgMusic);
@@ -87,12 +94,14 @@ function gameLoose() {
     
     TryAgainMessage.addEventListener('click',()=>{
        TryAgainMessage.style.display = 'none'; 
+       started = true;
     })   
 } 
 
 // Show Text Message
 function showTextMessage(message){
     message.style.display = 'block';
+    started = false;
 }
 
 function hideTextMessage(message){
@@ -109,7 +118,7 @@ function startTimer(){
              clearInterval(timer);
              musicPause(bgMusic);
              showTextMessage(ReplayMessage);
-             // 게임을 종료하고 아무것도 안눌러지게
+             // 게임을 종료하고 아무것도 안눌러지게 다른메세지들할때도 마찬가지
              // 다시 시작할지 리플레이 배너를 보여줌
          }
     }, 1000);
@@ -124,10 +133,19 @@ function showTimer(time){
 
 
 LevelUpMessage.addEventListener('click', () => {
+    started = true;
     i++;
     nextLevel();
     onClickField(levelUp[i].lev);
 })
+
+ReplayMessage.addEventListener('click',()=>{
+    startTimer();
+    musicPlay(bgMusic);
+    startGame();
+    hideTextMessage(ReplayMessage);
+
+});
 
 
 function nextLevel (){
