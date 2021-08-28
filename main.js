@@ -66,14 +66,14 @@ function level3(verti,horoz) {
 }
 
 function FinalWin(){
-    momnetOfWin(FinalWinMessage,finalWinSound);
+    finishGame(FinalWinMessage,finalWinSound);
 }
 
 function gameWIn() {
-    momnetOfWin(LevelUpMessage,winSound);
+    finishGame(LevelUpMessage,winSound);
 }
 
-function momnetOfWin(text,sound){
+function finishGame(text,sound){
     showTextMessage(text);
     hideTextMessage(TryAgainMessage);
     clearInterval(timer);
