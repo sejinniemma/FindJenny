@@ -6,13 +6,14 @@ const startBanner = document.querySelector('.game__start__banner');
 const TryAgainMessage = document.querySelector('.game__banner1');
 const LevelUpMessage = document.querySelector('.game__banner2');
 const FinalWinMessage = document.querySelector('.game__banner3');
+const ReplayMessage = document.querySelector('.game__banner4');
 const startBtn = document.querySelector('.startBtn');
 const gameTimer = document.querySelector('.game__timer');
 const gameBackGround = document.querySelector('.game__playground');
 
 
 let started = false;
-const timeDuration = 60;
+const timeDuration = 5;
 let timer;
 let i = 0;
 
@@ -107,6 +108,9 @@ function startTimer(){
          if(setTimeDuration === 0){
              clearInterval(timer);
              musicPause(bgMusic);
+             showTextMessage(ReplayMessage);
+             // 게임을 종료하고 아무것도 안눌러지게
+             // 다시 시작할지 리플레이 배너를 보여줌
          }
     }, 1000);
 }
@@ -164,6 +168,4 @@ function musicPause(sound){
     sound.pause();
 }
 
-//게임이 이겼을 떄 사운드추가
-//네이밍다시
 //시간이 0 이되면 무조건 게임오버 - 리플레이버튼 만들기 (게임 다시시작)
