@@ -18,32 +18,30 @@ let timer;
 let i = 0;
 
 // Game start
-startBtn.addEventListener('click', ()=>{
-    started = true;
-    if(!started){
-        return;
-    }else if(started){
-        initGame();
-    }
-});
+startBtn.addEventListener('click', initGame);
 
 function initGame() {
+    started = true;
     startBanner.style.display = 'none';
-    setTimeout(startGame,1000);
+    setTimeout(startGame,1000);    
     startTimer();
     musicPlay(bgMusic);
     }
 
 function startGame(){
-    started && onClickField(levelUp[i].lev);   
+        started === true && onClickField(levelUp[i].lev);
+    
 }
 
 // onClickFiled & gameWinAndLoose
 function onClickField(stage){
     gameContainer.addEventListener('click',(event)=>{
+        if(!started){
+            return;
+        }
         const x = event.clientX;
         const y = event.clientY;
-
+    
         stage(x,y);
         musicPlay(looseSound);
     })
@@ -82,6 +80,7 @@ function gameWIn() {
 }
 
 function finishGame(text,sound){
+    started = false;
     showTextMessage(text);
     hideTextMessage(TryAgainMessage);
     clearInterval(timer);
@@ -90,18 +89,18 @@ function finishGame(text,sound){
 }
 
 function gameLoose() {
+    started = false;
     showTextMessage(TryAgainMessage);
     
     TryAgainMessage.addEventListener('click',()=>{
+        started = true;
        TryAgainMessage.style.display = 'none'; 
-       started = true;
     })   
 } 
 
 // Show Text Message
 function showTextMessage(message){
     message.style.display = 'block';
-    started = false;
 }
 
 function hideTextMessage(message){
@@ -118,8 +117,7 @@ function startTimer(){
              clearInterval(timer);
              musicPause(bgMusic);
              showTextMessage(ReplayMessage);
-             // 게임을 종료하고 아무것도 안눌러지게 다른메세지들할때도 마찬가지
-             // 다시 시작할지 리플레이 배너를 보여줌
+             started = false;
          }
     }, 1000);
 }
@@ -140,11 +138,11 @@ LevelUpMessage.addEventListener('click', () => {
 })
 
 ReplayMessage.addEventListener('click',()=>{
+    started = true;
     startTimer();
     musicPlay(bgMusic);
     startGame();
     hideTextMessage(ReplayMessage);
-
 });
 
 
@@ -186,4 +184,4 @@ function musicPause(sound){
     sound.pause();
 }
 
-//시간이 0 이되면 무조건 게임오버 - 리플레이버튼 만들기 (게임 다시시작)
+
