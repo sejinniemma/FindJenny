@@ -30,20 +30,23 @@ function initGame() {
 
 function startGame(){
         started === true && onClickField(levelUp[i].lev);
-    
 }
 
 // onClickFiled & gameWinAndLoose
 function onClickField(stage){
     gameContainer.addEventListener('click',(event)=>{
-        if(!started){
-            return;
-        }
+        // if(!started){
+        //     return;
+        // }
+        //두번째 배열로 안감 근대 저걸해야 게임도중에 안눌리는데...왜 안가는지 알아내야함!!
+        
         const x = event.clientX;
         const y = event.clientY;
     
         stage(x,y);
         musicPlay(looseSound);
+
+//왜???? 왜 여기서 그냥 막혀버려 ??
     })
 }
 
@@ -117,6 +120,7 @@ function startTimer(){
              clearInterval(timer);
              musicPause(bgMusic);
              showTextMessage(ReplayMessage);
+             hideTextMessage(TryAgainMessage);
              started = false;
          }
     }, 1000);
@@ -134,7 +138,7 @@ LevelUpMessage.addEventListener('click', () => {
     started = true;
     i++;
     nextLevel();
-    onClickField(levelUp[i].lev);
+    startGame();
 })
 
 ReplayMessage.addEventListener('click',()=>{
