@@ -1,4 +1,10 @@
-# Find-Jenny-
+# Find-Jenny
+
+## What's this game?
+- You have to find 'Jenny' same with the picture of top
+- If you click other , you will see "Try again" message
+- There are 3 levels of this game.
+- If you find all Jenny,You can be a winner
 
 https://user-images.githubusercontent.com/80943394/134650210-5a52b952-367b-4913-b9ff-8db5fec1c2ed.mov
 
